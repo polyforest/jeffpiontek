@@ -231,24 +231,93 @@ a:hover {
    Print Optimization
 ========================= */
 
+/* Control page box margins to reduce auto-scaling and keep desktop layout size */
+@page {
+    margin: 12mm; /* adjust if you prefer tighter or looser margins */
+}
+
 @media print {
+    /* Preserve colors and improve fidelity in print */
+    html, body, .resume {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
     body {
         background: none;
     }
 
+    /* Force desktop container and spacing for print */
+    /* Reduce logo size in print to keep layout balanced and avoid overflow */
+    :root { --logo-size: 96px; }
+
     .resume {
         box-shadow: none;
-        margin: 0;
-        width: 100%;
-        padding: 0;
+        background: #ffffff;
+        width: 850px;            /* keep full desktop width */
+        margin: 0 auto;          /* center on page */
+        padding: 32px 40px;      /* comfortable printable padding */
     }
+
+    /* Enforce two-column desktop grid in print */
+    .content {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        gap: 32px;
+    }
+
+    /* Allow sections to break across pages, but keep their headers with following content */
+    .section {
+        break-inside: auto;
+        page-break-inside: auto;
+        margin-bottom: 28px; /* slightly tighter than screen to help fit */
+    }
+    .section-title,
+    .section-divider {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    /* Tweak job row spacing and alignment for print */
+    .job {
+        column-gap: 14px;      /* slightly tighter to compensate for logo size */
+        align-items: start;     /* keep title block aligned to top of logo */
+    }
+    .job-logo {
+        max-width: 100%;
+        max-height: var(--logo-size);
+    }
+
+    /* Ensure desktop typography (override any mobile downsizing) */
+    .name { font-size: 34px; letter-spacing: 0.12em; }
+    .title { font-size: 16px; }
+    .contact-line {
+        font-size: 13px;
+        display: block;         /* avoid stacked grid layout */
+        text-align: center;
+    }
+    .contact-line span { display: inline; margin: 0 10px; }
+
+    /* Avoid breaking important blocks across pages */
+    .job,
+    .header,
+    .summary,
+    .education-item,
+    .cert-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Lists print a bit tighter by default; keep readability */
+    .job ul { margin-top: 8px; }
+    .job li { line-height: 1.5; }
 }
 
 /* =========================
    Responsive (Mobile)
 ========================= */
 
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
     .resume {
         width: 100%;
         margin: 0;
@@ -261,7 +330,7 @@ a:hover {
     }
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
     :root { --logo-size: 96px; }
 
     .resume {
@@ -279,10 +348,19 @@ a:hover {
 
     .contact-line {
         font-size: 12px;
+        /* Stack contact items vertically on small screens */
+        display: grid;
+        justify-content: center;
+        row-gap: 4px;
+    }
+
+    /* Hide the pipe separators when stacked vertically */
+    .contact-line span {
+        display: none;
     }
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 400px) {
     :root { --logo-size: 72px; }
 
     .header-divider {
