@@ -1,0 +1,245 @@
+/* =========================
+   Base
+========================= */
+
+:root {
+    --accent: #27583f;
+    --text-primary: #222222;
+    --text-secondary: #666a73;
+    --divider: #e3e6ea;
+    --bg: #ffffff;
+    --logo-size: 64px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f5f6f8;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Resume container */
+
+.resume {
+    width: 850px;
+    margin: 40px auto;
+    background: var(--bg);
+    padding: 48px 56px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   Header
+========================= */
+
+.header {
+    text-align: center;
+}
+
+.name {
+    font-family: "Libre Baskerville", serif;
+    font-size: 34px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin: 0;
+}
+
+.name .initial {
+    font-size: 1.25em;   /* makes first letter larger */
+    letter-spacing: 0.02em;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-top: 6px;
+}
+
+.contact-line {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.contact-line span {
+    margin: 0 10px;
+}
+
+.header-divider {
+    height: 1px;
+    background: var(--accent);
+    margin: 24px 0 36px 0;
+    opacity: 0.6;
+}
+
+/* =========================
+   Layout Columns
+========================= */
+
+.content {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 40px;
+}
+
+/* =========================
+   Section Styling
+========================= */
+
+.section {
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.section-divider {
+    height: 1px;
+    background: var(--divider);
+    margin: 10px 0 16px 0;
+}
+
+/* =========================
+   Sidebar (Left)
+========================= */
+
+.sidebar .item {
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.skills-category {
+    margin-bottom: 16px;
+    /* Make skills body text italic and same size as main body text */
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.skills-category-title {
+    /* Style consistently with other headers (section-title) */
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    /* Ensure header itself is not italicized */
+    font-style: normal;
+}
+
+/* =========================
+   Summary
+========================= */
+
+.summary {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* =========================
+   Experience
+========================= */
+
+.job {
+    display: grid;
+    grid-template-columns: var(--logo-size) auto;
+    column-gap: 16px;
+    margin-bottom: 28px;
+}
+
+.job-logo {
+    width: var(--logo-size);
+    height: var(--logo-size);
+    object-fit: contain;
+}
+
+.job-content {
+    display: block;
+}
+
+.job-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.company-name {
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.job-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.job ul {
+    margin: 10px 0 0 18px;
+    padding: 0;
+}
+
+.job li {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+    color: var(--text-secondary);
+}
+
+/* =========================
+   Education / Certifications
+========================= */
+
+.education-item,
+.cert-item {
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+/* =========================
+   Links
+========================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Print Optimization
+========================= */
+
+@media print {
+    body {
+        background: none;
+    }
+
+    .resume {
+        box-shadow: none;
+        margin: 0;
+        width: 100%;
+        padding: 0;
+    }
+}
