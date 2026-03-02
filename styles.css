@@ -247,10 +247,6 @@ a:hover {
         background: none;
     }
 
-    /* Force desktop container and spacing for print */
-    /* Reduce logo size in print to keep layout balanced and avoid overflow */
-    :root { --logo-size: 96px; }
-
     .resume {
         box-shadow: none;
         background: #ffffff;
